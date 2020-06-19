@@ -36,17 +36,16 @@ const Drag: React.FC<any> = (props) => {
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>){
     let offset = e.pageY - startPageY
-    // debugger
     if(offset > lineHeight && draggingIndex < List.length){
        offset -= lineHeight;
        let newList = move(List,draggingIndex,draggingIndex+1)
-       console.log(newList,'newList>>>>')
        setList(newList)
        setDraggingIndex(draggingIndex+1)
        setStartPageY(startPageY + lineHeight)
     }else if(offset < -lineHeight && draggingIndex > 0){
        offset += lineHeight;
-       let newList = move(List,draggingIndex,draggingIndex-1)
+       let newList = move(List,draggingIndex-1,draggingIndex)
+       setList(newList)
        setDraggingIndex(draggingIndex-1)
        setStartPageY(startPageY - lineHeight)
     }

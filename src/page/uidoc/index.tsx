@@ -29,7 +29,7 @@ const UiDoc: React.FC<Props> = (props) => {
 
           <MenuItem key={2}>
             <Link to="/uidoc/doc1">
-              <div>12</div>
+              <div>文档1</div>
             </Link>
           </MenuItem>
           <MenuItem key={3}>

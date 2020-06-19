@@ -12,7 +12,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "rockui": "^0.5.0"
+    "rockui": "^0.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
