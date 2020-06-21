@@ -1,0 +1,12 @@
+.label_wrapper{
+    width: 100%;
+    background-color: aqua;
+    height: 100%;
+    /* margin: 30px 0px; */
+    color: #fff;
+    font-size: 28px;
+    font-weight: 500;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}

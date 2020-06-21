@@ -10,6 +10,10 @@ import Index from '../page/index';
 import Recipe from '../page/recipe/manager-list';
 import EditRecipe from '../page/recipe/edit-recipe';
 import Function from '../page/function';
+import Resume from '../page/resume';
+import ResumePreview from '../page/resume/preview';
+
+
 
 interface Props{}
 const HRouter:React.FC<Props>=(props)=>{
@@ -22,6 +26,8 @@ const HRouter:React.FC<Props>=(props)=>{
             <Route path="/recipe"  component={Recipe}></Route>
             <Route path="/editRecipe"  component={EditRecipe}></Route>
             <Route path="/function" component={Function}></Route>
+            <Route path="/resume" exact component={Resume}></Route>
+            <Route path="/resume/preview" component={ResumePreview}></Route>
         </Layout>
      </Router>
     )

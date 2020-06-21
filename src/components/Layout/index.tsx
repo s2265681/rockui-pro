@@ -7,12 +7,12 @@ const Layout:React.FC<Props>=(props)=>{
     const { location: { hash } } = window;
     const [isNav,setIsNav] = useState(false)
     useEffect(()=>{
-        if(hash&&hash!=='#/'){
+        if(hash&&hash!=='#/'&&hash!=='#/resume/preview'){
             setIsNav(true)
         }
         window.addEventListener('hashchange',()=>{
             const { location: { hash } } = window;
-            if(hash!=='#/'){
+            if(hash!=='#/'&&hash!=='#/resume/preview'){
                 setIsNav(true)
             }else{
                 setIsNav(false)
