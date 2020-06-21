@@ -5,6 +5,8 @@ import { Bg } from "rockui";
 import TwoColumn from '../component/TwoColumn';
 import OneColumn from '../component/OneColumn';
 import LabelBar from '../component/LabelBar'
+import ContentInfo from '../component/ContentInfo'
+
 import "./index.css";
 
 interface Props {
@@ -23,9 +25,7 @@ const Index: React.FC<Props> = (props) => {
         {content.map((item,index)=>{
           return(
              <div key={index}>
-                  {item.type=='one-column' && <OneColumn isEdit={false}/>}
-                  {item.type=='two-column' && <TwoColumn isEdit={false} />}
-                  {item.type=='nav-bar' && <LabelBar  isEdit={false} />}
+             <ContentInfo type={item.type}  content={content[index].content} isEdit={false}/>
             </div>
           )
         })}

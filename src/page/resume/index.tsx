@@ -5,6 +5,8 @@ import { Bg, Button } from 'rockui';
 import TwoColumn from './component/TwoColumn';
 import OneColumn from './component/OneColumn';
 import LabelBar from './component/LabelBar'
+import ContentInfo from './component/ContentInfo'
+
 import './index.css';
 import { findIndex } from 'lodash';
 
@@ -27,7 +29,7 @@ const Index:React.FC<Props>=(props)=>{
          console.log(content,type,val)
          let index:number = content.findIndex((item: { typeId: number; })=>item.typeId===id)
          content[index].content = val
-         setContent(content)
+         setContent([...content])
     }
 
 
@@ -41,7 +43,7 @@ const Index:React.FC<Props>=(props)=>{
                  选择布局
                  <Button onClick={()=>handleChoose('one-column')}>一栏布局</Button><br/>
                  <Button onClick={()=>handleChoose('two-column')}>两栏布局</Button><br/>
-                 <Button onClick={()=>handleChoose('nav-bar')}>NavBar</Button><br/>
+                 <Button onClick={()=>handleChoose('label-bar')}>LabelBar</Button><br/>
             </div>
             <div className="resume_right_wrapper">
                   <div  className="resume_edit_wrapper">
@@ -49,9 +51,7 @@ const Index:React.FC<Props>=(props)=>{
                       {content.map((item,index)=>{
                           return(
                              <div key={item.typeId}>
-                                  {item.type=='one-column' && <OneColumn/>}
-                                  {item.type=='two-column' && <TwoColumn/>}
-                                  {item.type=='nav-bar' && <LabelBar onChange={(val)=>handleContent('nav-bar', item.typeId ,val)}/>}
+                               <ContentInfo type={item.type} onChange={(val)=>handleContent('label-bar', item.typeId ,val)} content={content[index].content}/>
                             </div>
                           )
                       })}

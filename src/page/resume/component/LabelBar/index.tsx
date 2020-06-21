@@ -28,7 +28,7 @@ const Index: React.FC<Props> = (props) => {
  }
 
   return (
-    <div className="label_wrapper" style={{height:height}} onInput={(e)=>handleChange(e)}  ref={domRef} contentEditable={isEdit}>
+    <div className="label_wrapper" style={{height:height}} onBlur={(e)=>handleChange(e)}  ref={domRef} contentEditable={isEdit}>
              {content}
     </div>
   );
