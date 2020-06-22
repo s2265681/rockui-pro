@@ -53,7 +53,7 @@ const Index: React.FC<Props> = (props) => {
           <SubMenu title="选择布局">
             <MenuItem>
               <Button onClick={() => handleChoose("one-column")}>
-                两栏布局
+                一栏布局
               </Button>
             </MenuItem>
             <MenuItem>
