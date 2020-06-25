@@ -1,6 +1,5 @@
 import React from 'react'
 import List from './component/List';
-import './index.css'
 
 interface Props{
 }

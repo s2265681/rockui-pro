@@ -3,7 +3,6 @@ import Page2 from "../page2";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import _ from "lodash";
 
-import "./index.css";
 import {
   Button,
   Alert,

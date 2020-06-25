@@ -4,7 +4,6 @@ import _ from "lodash";
 import RockUi from "./doc_rockui";
 import Doc1 from "./doc1";
 import Doc2 from "./doc2";
-import "./index.css";
 import { Menu } from "rockui";
 
 const { MenuItem, SubMenu } = Menu;

@@ -6,7 +6,6 @@ import App from './App';
 import HRouter from './router'
 import * as serviceWorker from './serviceWorker';
 import "rockui/dist/index.css";
-
 ReactDOM.render(
   // <React.StrictMode>
     <HRouter />,

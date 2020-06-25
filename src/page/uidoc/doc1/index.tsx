@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { commissionData } from "./doc";
 import DocTemplate from "../../../components/DocTemplate";
-import "./index.css";
 let title:string;
 const Doc1: React.FC<any> = (props) => {
   // useEffect(()=>{

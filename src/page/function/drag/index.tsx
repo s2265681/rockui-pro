@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {Data} from './data';
-import  './index.css'
 import { List } from "antd/lib/form/Form";
 
 let lineHeight:number = 48;

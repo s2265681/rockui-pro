@@ -3,8 +3,6 @@ import {  Link } from "react-router-dom";
 // import StartSpace from '../../components/StartSpace';
 import { Bg } from 'rockui';
 
-import './index.css';
-
 interface Props{
    name:string
 }

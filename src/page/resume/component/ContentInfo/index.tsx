@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./index.css";
 
 interface Props {
   type?: string;

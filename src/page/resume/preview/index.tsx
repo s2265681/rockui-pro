@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import ContentInfo from '../component/ContentInfo'
-import "./index.css";
 
 interface Props {
   name: string;

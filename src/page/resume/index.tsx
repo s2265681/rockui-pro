@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Bg, Button, Icon } from "rockui";
 import ContentInfo from "./component/ContentInfo";
 import { Menu } from "rockui";
-import "./index.css";
 
 const { MenuItem, SubMenu } = Menu;
 
