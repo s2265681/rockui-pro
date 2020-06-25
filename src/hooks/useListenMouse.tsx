@@ -17,6 +17,7 @@ const useListenMouse =(payload:IProps,Fn:()=>void):any[]=> {
              document.removeEventListener('click',updateMouse)
          }
      },[position])
+     
      return [position]
 }
 export default useListenMouse;
