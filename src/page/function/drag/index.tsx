@@ -11,11 +11,13 @@ const Drag: React.FC<any> = (props) => {
       <hr />
       <ul>
         {List.map((el, index) => (
+          <li>
           <DragSortCom Data={List} key={el.id} index={index} setList={setList} lineHeight={40}>
             {el.id} —— {el.title}—— {el.content}
           </DragSortCom>
+          </li>
         ))}
-      </ul>
+        </ul>
     </div>
   );
 };

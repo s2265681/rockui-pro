@@ -5,6 +5,10 @@ interface Props {
   content: any[];
   isEdit?: boolean;
   onChange?: (value?: Node, type?: string) => void;
+  handleSelectMouseUp?: (
+    e: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>
+  ) => void;
+  onDrop?: (e: any) => void;
 }
 
 const Index: React.FC<Props> = (props) => {
@@ -17,16 +21,22 @@ const Index: React.FC<Props> = (props) => {
     }
   };
   return (
-    <div onBlur={(e) => handleChange(e, type)} className="content-info-wrapper">
+    <div
+      onBlur={(e) => handleChange(e, type)}
+      className="content-info-wrapper"
+      onKeyUp={(e) => props.handleSelectMouseUp&&props.handleSelectMouseUp(e)}
+      onDrop={(e) => props.onDrop&&props.onDrop(e)}
+      onDragOver={(e) => e.preventDefault()}
+    >
       {type === "label-bar" && (
         <div
           className="label_wrapper"
           ref={domRef}
           style={{ minHeight: 100 }}
           contentEditable={isEdit}
-        >
-          {content[0]}
-        </div>
+          suppressContentEditableWarning={true}
+          dangerouslySetInnerHTML={{ __html: content[0] }}
+        />
       )}
 
       {type === "one-column" && (
@@ -35,19 +45,25 @@ const Index: React.FC<Props> = (props) => {
           ref={domRef}
           style={{ minHeight: 300 }}
           contentEditable={isEdit}
-        >
-          {content[0]}
-        </div>
+          suppressContentEditableWarning={true}
+          dangerouslySetInnerHTML={{ __html: content[0] }}
+        />
       )}
 
       {type === "two-column" && (
         <div className="two_wrapper" style={{ minHeight: 300 }} ref={domRef}>
-          <div className="left_wrapper" contentEditable={isEdit}>
-            {content[0]}
-          </div>
-          <div className="right_wrapper" contentEditable={isEdit}>
-            {content[1]}
-          </div>
+          <div
+            className="left_wrapper"
+            contentEditable={isEdit}
+            suppressContentEditableWarning={true}
+            dangerouslySetInnerHTML={{ __html: content[0] }}
+          />
+          <div
+            className="right_wrapper"
+            contentEditable={isEdit}
+            suppressContentEditableWarning={true}
+            dangerouslySetInnerHTML={{ __html: content[1] }}
+          />
         </div>
       )}
     </div>
@@ -55,7 +71,7 @@ const Index: React.FC<Props> = (props) => {
 };
 
 Index.defaultProps = {
-  content: ["请输入内容","请输入内容"],
+  content: ["请输入内容", "请输入内容"],
   isEdit: true,
 };
 

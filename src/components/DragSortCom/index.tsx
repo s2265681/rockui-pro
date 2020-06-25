@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import Mask from "../Mask";
-import './index.css'
+import "./index.css";
 
 interface IProps {
   Data: any[];
   index: number;
   lineHeight: number;
   setList: (list: any[]) => void;
+  onMouseUp?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const DragSortCom: React.FC<IProps> = (props) => {
-  const { Data: List, index, setList, lineHeight, children } = props;
+  const { Data: List, index, setList, lineHeight, children,onMouseUp } = props;
+
   const [draging, setDrag] = useState(false);
   const [startPageY, setStartPageY] = useState(0);
   const [offsetPageY, setOffsetPageY] = useState(0);
@@ -20,7 +22,7 @@ const DragSortCom: React.FC<IProps> = (props) => {
     evt: React.MouseEvent<HTMLElement, MouseEvent>,
     index: number
   ) {
-    evt.stopPropagation();
+    // evt.stopPropagation();// 不能阻止冒泡
     setDraggingIndex(index);
     setStartPageY(evt.pageY);
     setDrag(true);
@@ -59,7 +61,6 @@ const DragSortCom: React.FC<IProps> = (props) => {
     console.log(arr, startIndex, toIndex);
     arr = arr.slice();
     arr.splice(toIndex, 0, arr.splice(startIndex, 1)[0]);
-    console.log(arr, "arr");
     return arr;
   }
 
@@ -67,18 +68,21 @@ const DragSortCom: React.FC<IProps> = (props) => {
     setDrag(false);
     setStartPageY(0);
     setDraggingIndex(-1);
+    onMouseUp&&onMouseUp(e)
   }
 
   return (
     <>
-      <li
+      <div
         onMouseDown={(evt) => handleMouseDown(evt, index)}
         key={index}
         style={getLiStyle(index)}
-        className={`mask-li-style ${index == draggingIndex?' chooseSty':''}`}
+        className={`mask-li-style ${
+          index == draggingIndex ? " chooseSty" : ""
+        }`}
       >
         {children}
-      </li>
+      </div>
       <Mask
         visible={draging}
         onMouseMove={handleMouseMove}

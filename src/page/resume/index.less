@@ -22,6 +22,7 @@
    height: 90vh;
    border: 1px solid #999;
    overflow-y: scroll;
+   padding-bottom: 40px;
 }
 
 .resume_right_wrapper{
@@ -30,10 +31,24 @@
     flex-direction: row;
 }
 
-.btn_preview{
-    padding-left: 30px;
+.preview_wrapper {
+    margin-left: 20px;
+    background: #fff;
+    border-left: #333 dashed 1px;
+    height: 90vh;
+    width: 30%;
+    padding: 10px 0;
 }
+
+.btn_preview{
+    display: flex;
+    justify-content: space-around;
+}
+
 .resume_delete_btn{
     position: absolute !important;
     right: 5px;
+    z-index: 2;
+    cursor: pointer;
+    
 }
