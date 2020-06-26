@@ -59,7 +59,7 @@ const Index: React.FC<Props> = (props) => {
      if(!document.getSelection()?.anchorNode) return;
      let selector :any = document.getSelection();
     //  let beforeNum = selector?.
-       console.log(selector,'selector>>');
+       console.log(selector?.extentNode,'anchorNode>>');
 
   };
 

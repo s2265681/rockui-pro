@@ -4,7 +4,9 @@ import _ from "lodash";
 import F_nav from "./f_nav";
 import Drag from "./drag";
 import DragDemo from "./drag-demo";
+import moveBox from "./handlebox";
 import { Menu } from "rockui";
+
 
 const { MenuItem, SubMenu } = Menu;
 
@@ -35,6 +37,11 @@ const Index: React.FC<Props> = (props) => {
               <div>拖拽demo</div>
             </Link>
           </MenuItem>
+          <MenuItem key={4}>
+          <Link to="/function/handlebox">
+            <div>操作盒子</div>
+          </Link>
+        </MenuItem>
         </Menu>
       </div>
 
@@ -43,6 +50,8 @@ const Index: React.FC<Props> = (props) => {
           <Route path="/function" exact component={F_nav}></Route>
           <Route path="/function/drag" component={Drag}></Route>
           <Route path="/function/drag-demo" component={DragDemo}></Route>
+          <Route path="/function/handlebox" component={moveBox}></Route>
+
         </Router>
       </div>
     </div>
