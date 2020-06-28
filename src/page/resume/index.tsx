@@ -152,6 +152,10 @@ const Index: React.FC<Props> = (props) => {
               <Button btnType="primary">预览</Button>
             </Link>
             <br />
+            <Link to="/resume/preview?id=0">
+               <Button btnType="primary">幻灯片预览</Button>
+            </Link>
+            <br />
             <Button btnType="primary" onClick={() => setContent([])}>
               清空
             </Button>
