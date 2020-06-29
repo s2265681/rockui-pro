@@ -1,51 +1,32 @@
-import React, { useState } from "react";
-import Mask from "../../../components/Mask";
-interface Props {}
+import React, { useState,useEffect } from "react";
+import HandleBlock from "../../../components/HandleBlock";
 
+interface Props{}
+
+let localBlock = localStorage.getItem('block-demo')
+let blockObj = localBlock && JSON.parse(localBlock)
 const Index: React.FC<Props> = (props) => {
-  const [Point, setPoint] = useState({ x: 0, y: 0 });
-  const [isdragging, setIsdraging] = useState(false);
+  const [block, setBlock] = useState( blockObj ||
+    { 
+    width: 200, height: 200,
+    pointX : 300, pointY : 100
+   });
 
-  const handleMoveDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setIsdraging(true);
-    let startX = e.pageX;
-    let startY = e.pageY;
-    let handle_box = document.querySelector("#handle_box");
-    let width: any = handle_box?.clientWidth;
-    let height: any = handle_box?.clientHeight;
+  useEffect(()=>{
+     localStorage.setItem('block-demo',JSON.stringify(block))
+  },[block])
 
-    setPoint({ x: startX - width / 2, y: startY - height / 2 });
-  };
+  const handleBlock=(info: any)=>{
+    setBlock(info)
+  }
 
-  const handleMoveUp = (e: any) => {
-    setIsdraging(false);
-    console.log(Point, "Point");
-  };
-
-  const handleMove = (e: any) => {
-    let startX = e.pageX;
-    let startY = e.pageY;
-
-    let handle_box = document.querySelector("#handle_box");
-    let width: any = handle_box?.clientWidth;
-    let height: any = handle_box?.clientHeight;
-
-    setPoint({ x: startX - width / 2, y: startY - height / 2 });
-  };
   return (
     <div className="handle_box_wrapper">
-      <div
-        className="box"
-        style={{ left: Point.x, top: Point.y }}
-        onMouseDown={(e) => handleMoveDown(e)}
-        id="handle_box"
-      >
-        1212
-      </div>
-      <Mask
-        visible={isdragging}
-        onMouseMove={handleMove}
-        onMouseUp={handleMoveUp}
+      <HandleBlock
+         blockInfo={
+          block
+         }
+         onChange={handleBlock}
       />
     </div>
   );
