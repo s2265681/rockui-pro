@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { tasks, STATUS_CODE } from "./data";
 import TaskCol from './component/TaskCol'
 import TaskItem from './component/TaskItem'
-// import "./index.css";
 interface Props {}
 const Index: React.FC<Props> = (props) => {
   const [activeId,setActiveId] = useState<number>(-1)
