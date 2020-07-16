@@ -14,6 +14,8 @@ import {
   Spin,
   Animation,
   Commission,
+  AutoComplete,
+  Upload,
 } from "rockui";
 // const {AlertType}  = Alert;
 // import {Table} from "antd";
@@ -170,7 +172,31 @@ const Home: React.FC<Props> = (props) => {
     localStorage.setItem("PLANDATA", JSON.stringify(planDate));
   }, [planDate]);
 
-  console.log(planDate, "planDate>>>");
+  // 信息补全组件
+  const handleFetch = (query: string) => {
+    // mdn fetch API
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then((res) => res.json())
+      .then(({ items }) => {
+        console.log(items);
+        return items
+          .slice(0, 10)
+          .map((item: any) => ({ value: item.login, ...item }));
+      });
+  };
+  //handleSelect
+  const handleSelect = (value: any) => {
+    console.log(value);
+  };
+  // 自定义渲染
+  const renderOption = (item: any) => {
+    return (
+      <>
+        <h2>Name: {item.value}</h2>
+        <p>url: {item.url}</p>
+      </>
+    );
+  };
   return (
     <Animation>
       <div className="home_wrapper">
@@ -187,6 +213,27 @@ const Home: React.FC<Props> = (props) => {
             <MenuItem>dropdown3</MenuItem>
           </SubMenu>
         </Menu>
+        <br />
+        <AutoComplete
+          fetchSuggestions={handleFetch}
+          onSelect={handleSelect}
+          renderOption={renderOption}
+        />
+        <br />
+        <Upload
+          // action = "https://jsonplaceholder.typicode.com/posts"
+          // beforeUpload={filePromise}
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          onChange={() => console.log("changed")}
+          onRemove={() => console.log("removed")}
+          name="fileName"
+          multiple
+          drag
+        >
+          <Icon icon="upload" size="5x" theme="secondary" />
+          <br />
+          <p>Drag file over to upload</p>
+        </Upload>
         <br />
         <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
           <TabItem label="Button">
