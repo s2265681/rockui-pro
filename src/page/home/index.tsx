@@ -62,7 +62,7 @@ const columns: any = [
     key: "type",
     render(t: number, r: any, i: any) {
       return (
-        <span style={{ color: "#f00" }}>
+        <span>
           {t === 1 ? "蔬菜" : t === 2 ? "水果" : "主食"}
         </span>
       );
@@ -157,7 +157,7 @@ const commissionData = [
   {
     id: 1,
     title: "",
-    content: "",
+    content: ""
   },
 ];
 
@@ -197,6 +197,11 @@ const Home: React.FC<Props> = (props) => {
       </>
     );
   };
+
+  const filePromise = (file: File) => {
+    const newFile = new File([file], "new_name.png", { type: file.type });
+    return Promise.resolve(newFile);
+  };
   return (
     <Animation>
       <div className="home_wrapper">
@@ -222,7 +227,7 @@ const Home: React.FC<Props> = (props) => {
         <br />
         <Upload
           // action = "https://jsonplaceholder.typicode.com/posts"
-          // beforeUpload={filePromise}
+          beforeUpload={filePromise}
           action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           onChange={() => console.log("changed")}
           onRemove={() => console.log("removed")}
