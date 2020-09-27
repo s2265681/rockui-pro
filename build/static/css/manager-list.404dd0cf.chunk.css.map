@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAIA,sBACE,YAAa,CACb,6BACF","file":"manager-list.404dd0cf.chunk.css","sourcesContent":[".wrapper-list{\n   /* padding: 0 100px; */\n}\n\n.wrapper-list .header{\n  display: flex;\n  justify-content: space-between;\n}"]}
